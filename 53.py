@@ -1,6 +1,6 @@
 class Solution(object):
 
-    # O(n) solution to question 53. The main idea is to max a choice if we should continue the sub string or start a new one.
+    # O(n) solution to question 53. The main idea is to make a choice if we should continue the sub string or start a new one.
     def maxSubArray(self, nums):
         """
         :type nums: List[int]
