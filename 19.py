@@ -27,5 +27,5 @@ class Solution(object):
             prev = prev.next
             remove -= 1
 
-        prev = prev.next.next
+        prev.next = prev.next.next
         return head
