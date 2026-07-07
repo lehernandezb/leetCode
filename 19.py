@@ -10,4 +10,22 @@ class Solution(object):
         :type n: int
         :rtype: Optional[ListNode]
         """
+
+        length = 0
+        temp = head
+        while temp != None:
+            length += 1
+            temp = temp.next
         
+        if length == n:
+            return head.next 
+        
+        remove = length - n - 1
+
+        prev = head
+        while remove > 0:
+            prev = prev.next
+            remove -= 1
+
+        prev = prev.next.next
+        return head
