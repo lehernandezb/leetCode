@@ -1,48 +1,20 @@
-class Node:
-    def __init__(self):
-        self.child = [None] * 10
-        self.isEnd = False
-
-
-class Solution:
-
-    def insert(self, word, root):
-        temp = root
-
-        for ch in word:
-            idx = ord(ch) - ord('0')
-
-            if temp.child[idx] is None:
-                temp.child[idx] = Node()
-
-            temp = temp.child[idx]
-
-        temp.isEnd = True
-
-    def check(self, string, root):
-        temp = root
-        idx = 0
-
-        while idx < len(string):
-            i = ord(string[idx]) - ord('0')
-
-            if temp.child[i] is not None:
-                temp = temp.child[i]
-                idx += 1
-            else:
-                break
-
-        return idx
-
+class Solution(object):
     def longestCommonPrefix(self, arr1, arr2):
-        root = Node()
-
-        for x in arr2:
-            self.insert(str(x), root)
-
-        ans = 0
-
-        for x in arr1:
-            ans = max(ans, self.check(str(x), root))
-
-        return ans
+        """
+        :type arr1: List[int]
+        :type arr2: List[int]
+        :rtype: int
+        """
+        st = set()
+        for num in arr1:
+            while num and num not in st:
+                st.add(num)
+                num //= 10
+        ans = -1
+        for num in set(arr2):
+            while num:
+                if num in st:
+                    ans = max(ans, num)
+                    break
+                num //= 10
+        return 0 if ans == -1 else len(str(ans))
